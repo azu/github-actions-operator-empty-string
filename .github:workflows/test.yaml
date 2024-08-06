@@ -1,0 +1,20 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Empty string and or
+        run: |
+          echo "OR_VALUE: $OR_VALUE"
+          echo "AND_VALUE: $AND_VALUE"
+        env:
+          OR_VALUE: ${{ '' || 'or value' }}
+          AND_VALUE: ${{ '' && 'and value' }}
